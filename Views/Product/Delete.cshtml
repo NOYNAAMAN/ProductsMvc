@@ -1,0 +1,7 @@
+﻿@model Product
+<h1>Delete Product</h1>
+
+<form asp-action="DeleteProduct" asp-route-id="@Model.Id" method="post">
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-controller="Product" asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

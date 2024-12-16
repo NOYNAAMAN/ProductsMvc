@@ -7,7 +7,6 @@ namespace ProductsMvc.Infarstucture.Data
     {
         public DbSet<Product> Products { get; set; }
 
-
         public ProductMvcContext(DbContextOptions dbOptions) : base(dbOptions)
         {
         }

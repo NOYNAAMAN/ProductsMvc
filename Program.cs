@@ -11,9 +11,10 @@ namespace ProductsMvc
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            string connectionString = "Server=DESKTOP-EDCKIKS;Database=ProductMvc;Trusted_Connection=True;TrustServerCertificate=True;";
+            string connectionString = "Server=127.0.0.1;Database=ProductMvc;User=root;Password=7eB$Cde%F@TQuS;Port=4052;";
 
-            builder.Services.AddDbContext<ProductMvcContext>(options => options.UseSqlServer(connectionString));
+            builder.Services.AddDbContext<ProductMvcContext>(options =>
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

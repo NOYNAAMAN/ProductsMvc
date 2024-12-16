@@ -45,5 +45,52 @@ namespace ProductsMvc.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+        public IActionResult Edit(int id)
+        {
+            Product? p = _context.Products.FirstOrDefault(p => p.Id == id);
+            if (p == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(p);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product newP)
+        {
+            _context.Products.Update(newP);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var product = _context.Products.FirstOrDefault(p => p.Id == id);
+            if (product == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(product);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteProduct(int id)
+        {
+            var product = _context.Products.FirstOrDefault(p => p.Id == id);
+            if (product == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            _context.Products.Remove(product);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }
